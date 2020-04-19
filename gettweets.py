@@ -2,10 +2,10 @@ import tweepy
   
 # Fill the X's with the credentials obtained by  
 # following the above mentioned procedure. 
-consumer_key = "IRtAWN2xOvjmCue4lmQEkHNoQ" 
-consumer_secret = "veMK7T5audEbTegdB6gEm0uYnnco6dDp1JvEmciGd5vo5LF9Sx"
-access_key = "849797017396285440-JGOg1SGRJRZZ8n5aelLSr7tpr5EAEd6"
-access_secret = "somOg3BochMLJfgasCQzyQbuhA9rglRJ4Y80bmShFYljB"
+consumer_key = "" 
+consumer_secret = ""
+access_key = "-"
+access_secret = ""
   
 # Function to extract tweets 
 def get_tweets(username): 
