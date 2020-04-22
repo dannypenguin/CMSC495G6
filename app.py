@@ -2,14 +2,18 @@ from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+33 initialize db
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
+# create db
 class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    id = db.Column(db.Integer, primary_key=True)# Tweet ID
+    author = db.Column(db.String(50), nullable=False)# Twitter Username
+    url = db.Column(db.String(500), nullable=False)# tweet url
+    content = db.Column(db.String(200), nullable=False)# Tweet Content
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)# Date/time of tweet
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -18,8 +22,8 @@ class Todo(db.Model):
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        task_content = request.form['content']
-        new_task = Todo(content=task_content)
+        task_content = request.form['content'] # pull
+        new_task = Todo(content=task_content) # new tweet text
 
         try:
             db.session.add(new_task)
