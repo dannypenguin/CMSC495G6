@@ -33,7 +33,7 @@ def get_tweets(username):
     # hold tweets as python dicts
     data = []
 
-    while True:
+    while flag:
         # Pull first page of user's recent tweets
         tweets = api.user_timeline(screen_name=username, page=page)
 
@@ -44,7 +44,7 @@ def get_tweets(username):
                     'screen_name': tweet.user.screen_name,
                     'retweet_count': tweet.retweet_count,
                     'text': tweet.full_text,
-                    'mined_at': datetime.datetime.now(),
+                    'time_read_at': datetime.datetime.now(),
                     'created_at': tweet.created_at,
                     'favourite_count': tweet.favorite_count,
                     'hashtags': tweet.entities['hashtags'],
@@ -55,7 +55,7 @@ def get_tweets(username):
 
             if(datetime.datetime.now() - tweet.created_at).days > 2:
                 flag = True
-                data.append(tweet_info)
+                #data.append(tweet_info)
                 return
 
         if not flag:
