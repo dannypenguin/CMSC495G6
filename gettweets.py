@@ -3,8 +3,8 @@ import datetime
 
 # Fill the X's with the credentials obtained by
 # following the above mentioned procedure.
-consumer_key = "IRtAWN2xOvjmCue4lmQEkHNoQ"
-consumer_secret = "veMK7T5audEbTegdB6gEm0uYnnco6dDp1JvEmciGd5vo5LF9Sx"
+consumer_key = ""
+consumer_secret = ""
 access_key = "-"
 access_secret = ""
 
