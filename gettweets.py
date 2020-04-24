@@ -40,7 +40,7 @@ def get_tweets02(username):
                     'hashtags': tweet.entities['hashtags'],
                     'status_count': tweet.user.statuses_count,
                     'location': tweet.place,
-                    'source_device': tweet.source
+                    'source_url': tweet.source_url
                 }
         data.append(tweet_info)
 

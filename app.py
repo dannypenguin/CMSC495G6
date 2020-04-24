@@ -24,6 +24,15 @@ data = gettweets.get_tweets02("whitehouse")
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    for tweet in data:
+        new_tweet = Todo(id = tweet['tweet_id'], author = 'name', url = 'source_url', content = 'text', date_created = 'created_at')
+        try:
+            db.session.add(new_tweet)
+            db.session.commit() # try adding all tweets and only doing one commit after loop
+        except:
+            return 'There was an issue adding your tweet'
+    return redirect('/')
+
     if request.method == 'POST':
         task_content = request.form['content'] # pull
         new_task = Todo(content=task_content) # new tweet text
