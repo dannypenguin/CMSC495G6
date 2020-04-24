@@ -43,6 +43,4 @@ def get_tweets02(username):
                     'source_url': tweet.source_url
                 }
         data.append(tweet_info)
-
-
     return data
