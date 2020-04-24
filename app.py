@@ -10,11 +10,12 @@ db = SQLAlchemy(app)
 data = []
 # create db
 class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)# Tweet ID
+    id = db.Column(db.Integer, primary_key=True)# db ID
+    tweet_id = db.Column(db.Integer, nullable=False) # tweet id
     author = db.Column(db.String(50), nullable=False)# Twitter Username
-    url = db.Column(db.String(500), nullable=False)# tweet url
-    content = db.Column(db.String(200), nullable=False)# Tweet Content
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)# Date/time of tweet
+    #url = db.Column(db.String(500), nullable=False)# tweet url
+    #content = db.Column(db.String(200), nullable=False)# Tweet Content
+    #date_created = db.Column(db.DateTime, default=datetime.utcnow)# Date/time of tweet
 
     def __repr__(self):
         return '<Tweet %r>' % self.id
@@ -26,19 +27,20 @@ data = gettweets.get_tweets02("whitehouse")
 def index():
     if request.method == 'POST':
         for tweet in data:
-            new_tweet = Todo(id = tweet['tweet_id'], author = 'name', url = 'source_url', content = 'text', date_created = 'created_at')
+            new_tweet = Todo(tweet_id = tweet['tweet_id'], author = 'name')
             try:
                 db.session.add(new_tweet)
                 db.session.commit() # try adding all tweets and only doing one commit after loop
+                print("it werked")
             except:
                 return 'There was an issue adding your tweet'
         return redirect('/')
     
     else:
-        tweets = Todo.query.order_by(Todo.date_created).all()
-        return render_template('index.html', tweets=tweets)
+        tweets = Todo.query.order_by(Todo.id).all()
+        return render_template('index.html', tweets = tweets)
 
-@app.route('/delete/<int:id>')
+'''@app.route('/delete/<int:id>')
 def delete(id):
     task_to_delete = Todo.query.get_or_404(id)
 
@@ -63,7 +65,7 @@ def update(id):
             return 'There was an issue updating your task'
 
     else:
-        return render_template('update.html', task=task)
+        return render_template('update.html', task=task)'''
 
 
 if __name__ == "__main__":
