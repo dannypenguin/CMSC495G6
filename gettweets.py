@@ -23,7 +23,7 @@ def get_tweets02(username):
     data = []
 
     # Iterate thru tweets
-    for tweet in tweepy.Cursor(api.user_timeline, screen_name = username).pages():
+    for tweet in tweepy.Cursor(api.user_timeline, screen_name = username, tweet_mode = 'extended').pages():
         # limit age of tweet
         if (datetime.datetime.now() - tweet.created_at).days > 2:
             break

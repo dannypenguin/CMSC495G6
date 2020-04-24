@@ -1,12 +1,13 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import gettweets
 
-33 initialize db
+#initialize db
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
-
+data = []
 # create db
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)# Tweet ID
@@ -18,6 +19,8 @@ class Todo(db.Model):
     def __repr__(self):
         return '<Task %r>' % self.id
 
+# Pull initial tweets
+data = gettweets.get_tweets02("whitehouse")
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
