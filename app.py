@@ -45,8 +45,8 @@ def index():
             return 'There was an issue adding your task'
 
     else:
-        tasks = Todo.query.order_by(Todo.date_created).all()
-        return render_template('index.html', tasks=tasks)
+        tweets = Todo.query.order_by(Todo.date_created).all()
+        return render_template('index.html', tasks=tweets)
 
 
 @app.route('/delete/<int:id>')
