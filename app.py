@@ -17,7 +17,7 @@ class Todo(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)# Date/time of tweet
 
     def __repr__(self):
-        return '<Task %r>' % self.id
+        return '<Tweet %r>' % self.id
 
 # Pull initial tweets
 data = gettweets.get_tweets02("whitehouse")
