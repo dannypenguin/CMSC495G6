@@ -24,7 +24,7 @@ def get_tweets02(username):
     data = []
 
     # Iterate thru tweets
-    for tweet in tweepy.Cursor(api.user_timeline, screen_name = username, tweet_mode = 'extended').items(1):
+    for tweet in tweepy.Cursor(api.user_timeline, screen_name = username, tweet_mode = 'extended').items(2):
         # limit age of tweet
        # if (datetime.datetime.now() - tweet.created_at.date).days > 2:
        #     break
@@ -32,17 +32,17 @@ def get_tweets02(username):
         print(tweet.user.name)
         tweet_info = {
                     'tweet_id': tweet.id,
-                    'name': tweet.user.name
+                    'name': tweet.user.screen_name,
                     #'screen_name': tweet.user.screen_name,
                     #'retweet_count': tweet.retweet_count,
-                    #'text': tweet.full_text,
+                    'text': tweet.full_text,
                     #'time_read_at': datetime.datetime.now(),
                     #'created_at': tweet.created_at,
                     #'favourite_count': tweet.favorite_count,
                     #'hashtags': tweet.entities['hashtags'],
                     #'status_count': tweet.user.statuses_count,
                     #'location': tweet.place,
-                    #'source_url': tweet.source_url
+                    'source_url': tweet.source_url
                 }
         data.append(tweet_info)
     return data
