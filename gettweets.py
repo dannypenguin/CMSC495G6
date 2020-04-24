@@ -1,4 +1,5 @@
 import tweepy
+import datetime
 
 # Fill the X's with the credentials obtained by
 # following the above mentioned procedure.
@@ -8,11 +9,8 @@ access_key = "-"
 access_secret = ""
 
 # Function to extract tweets
-
-
-def get_tweets(username):
-
-    # Authorization to consumer key and consumer secret
+def get_tweets02(username):
+     # Authorization to consumer key and consumer secret
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 
     # Access to user's access key and access secret
@@ -21,24 +19,16 @@ def get_tweets(username):
     # Calling api
     api = tweepy.API(auth)
 
-    # 200 tweets to be extracted
-    number_of_tweets = 200
-
-    # Page to start
-    page = 1
-
-      # flag
-    stop = False
-
     # hold tweets as python dicts
     data = []
 
-    while flag:
-        # Pull first page of user's recent tweets
-        tweets = api.user_timeline(screen_name=username, page=page)
+    # Iterate thru tweets
+    for tweet in tweepy.Cursor(api.user_timeline, screen_name = username).pages():
+        # limit age of tweet
+        if (datetime.datetime.now() - tweet.created_at).days > 2:
+            break
 
-        for tweet in tweets:
-                tweet_info = {
+        tweet_info = {
                     'tweet_id': tweet.id,
                     'name': tweet.user.name,
                     'screen_name': tweet.user.screen_name,
@@ -52,17 +42,10 @@ def get_tweets(username):
                     'location': tweet.place,
                     'source_device': tweet.source
                 }
+        data.append(tweet_info)
 
-            if(datetime.datetime.now() - tweet.created_at).days > 2:
-                flag = True
-                #data.append(tweet_info)
-                return
 
-        if not flag:
-            page++
-            data.append(tweet_info)
-
-return data
+    return data
 
 
 # Driver code
@@ -70,4 +53,4 @@ if __name__ == '__main__':
 
     # Here goes the twitter handle for the user
     # whose tweets are to be extracted.
-    get_tweets("whitehouse")
+    get_tweets02("whitehouse")
