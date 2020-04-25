@@ -1,5 +1,5 @@
 import tweepy
-import datetime
+from datetime import datetime
 
 # Fill the X's with the credentials obtained by
 # following the above mentioned procedure.
@@ -30,6 +30,7 @@ def get_tweets02(username):
        #     break
         print(tweet.id)
         print(tweet.user.name)
+        print(tweet.created_at.strftime("%m/%d/%Y, %H:%M:%S"))
         tweet_info = {
                     'tweet_id': tweet.id,
                     'name': tweet.user.screen_name,
@@ -37,7 +38,7 @@ def get_tweets02(username):
                     #'retweet_count': tweet.retweet_count,
                     'text': tweet.full_text,
                     #'time_read_at': datetime.datetime.now(),
-                    #'created_at': tweet.created_at,
+                    'created': tweet.created_at.strftime("%m/%d/%Y, %H:%M:%S"),
                     #'favourite_count': tweet.favorite_count,
                     #'hashtags': tweet.entities['hashtags'],
                     #'status_count': tweet.user.statuses_count,

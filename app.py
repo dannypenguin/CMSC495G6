@@ -15,7 +15,7 @@ class Todo(db.Model):
     author = db.Column(db.String(50), nullable=False)# Twitter Username
     url = db.Column(db.String(500), nullable=False)# tweet url
     content = db.Column(db.String(200), nullable=False)# Tweet Content
-    #date_created = db.Column(db.DateTime, default=datetime.utcnow)# Date/time of tweet
+    date_created = db.Column(db.String(50), nullable=False)# Date/time of tweet
 
     def __repr__(self):
         return '<Tweet %r>' % self.id
@@ -27,7 +27,7 @@ data = gettweets.get_tweets02("whitehouse")
 def index():
     if request.method == 'POST':
         for tweet in data:
-            new_tweet = Todo(tweet_id = tweet['tweet_id'], author = tweet['name'], content = tweet['text'], url = tweet['source_url'])
+            new_tweet = Todo(tweet_id = tweet['tweet_id'], author = tweet['name'], content = tweet['text'], url = tweet['source_url'], date_created = tweet['created'])
             try:
                 db.session.add(new_tweet)
                 db.session.commit() # try adding all tweets and only doing one commit after loop

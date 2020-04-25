@@ -13,15 +13,17 @@
     <table>
         <tr>
             <th>Author</th>
-            <th>Content</th>
             <th>URL</th>
+            <th>Content</th>
+            <th>Date/Time of Tweet</th>
             <th>Actions</th>
         </tr>
         {% for tweet in tweets %}
             <tr>
                 <td>{{ tweet.author }}</td>
-                <td>{{ tweet.content }}</td>
                 <td>{{ tweet.url }}</td>
+                <td>{{ tweet.content }}</td>
+                <td>{{ tweet.date_created }}</td>
                 <td>
                     <a href="/delete/{{tweet.id}}">Delete</a>
                     <br>
