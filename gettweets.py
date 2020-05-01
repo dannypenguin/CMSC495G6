@@ -1,46 +1,39 @@
-import tweepy 
-  
-# Fill the X's with the credentials obtained by  
-# following the above mentioned procedure. 
-consumer_key = "" 
+import tweepy
+from datetime import datetime
+
+# Fill the X's with the credentials obtained by
+# following the above mentioned procedure.
+consumer_key = ""
 consumer_secret = ""
 access_key = "-"
 access_secret = ""
-  
-# Function to extract tweets 
-def get_tweets(username): 
-          
-        # Authorization to consumer key and consumer secret 
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
-  
-        # Access to user's access key and access secret 
-        auth.set_access_token(access_key, access_secret) 
-  
-        # Calling api 
-        api = tweepy.API(auth) 
-  
-        # 200 tweets to be extracted 
-        number_of_tweets=200
-        tweets = api.user_timeline(screen_name=username) 
-  
-        # Empty Array 
-        tmp=[]  
-  
-        # create array of tweet information: username,  
-        # tweet id, date/time, text 
-        tweets_for_csv = [tweet.text for tweet in tweets] # CSV file created  
-        for j in tweets_for_csv: 
-  
-            # Appending tweets to the empty array tmp 
-            tmp.append(j)  
-  
-        # Printing the tweets 
-        print(tmp) 
-  
-  
-# Driver code 
-if __name__ == '__main__': 
-  
-    # Here goes the twitter handle for the user 
-    # whose tweets are to be extracted. 
-    get_tweets("whitehouse")  
+
+# Function to extract tweets
+def get_tweets02(username):
+     # Authorization to consumer key and consumer secret
+    auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
+
+    # Calling api
+    api = tweepy.API(auth)
+
+    # hold tweets as python dicts
+    data = []
+
+    # Iterate thru tweets
+    for tweet in tweepy.Cursor(api.user_timeline, screen_name = username, tweet_mode = 'extended').items(2):
+        print(tweet.id)
+        print(tweet.user.name)
+        print(tweet.created_at.strftime("%m/%d/%Y, %H:%M:%S"))
+        tweet_info = {
+                    'tweet_id': tweet.id,
+                    'name': tweet.user.screen_name,
+                    #'screen_name': tweet.user.screen_name,
+                    #'retweet_count': tweet.retweet_count,
+                    'text': tweet.full_text,
+                    #'time_read_at': datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S"),
+                    'created': tweet.created_at.strftime("%m/%d/%Y, %H:%M:%S"),
+                    #'favourite_count': tweet.favorite_count,
+                    'source_url': tweet.source_url
+                }
+        data.append(tweet_info)
+    return data
