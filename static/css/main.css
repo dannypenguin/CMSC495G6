@@ -4,8 +4,8 @@ body, html {
 }
 
 .content {
-    margin: 0 auto;
-    width: 400px;
+    padding-left: 150px;
+    padding-right: 150px;
 }
 
 table, td, th {
