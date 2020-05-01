@@ -4,6 +4,40 @@
 {% endblock %}
 
 {% block body %}
+<div class="content">
+    <h1 style="text-align: center">Tweet Master</h1>
+    {% if tweets|length < 1 %}
+    <h4 style="text-align: center">There are no Tweets. Create one below!</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Author</th>
+            <th>URL</th>
+            <th>Content</th>
+            <th>Date/Time of Tweet</th>
+            <th>Actions</th>
+        </tr>
+        {% for tweet in tweets %}
+            <tr>
+                <td>{{ tweet.author }}</td>
+                <td>{{ tweet.url }}</td>
+                <td>{{ tweet.content }}</td>
+                <td>{{ tweet.date_created }}</td>
+                <td>
+                    <a href="/delete/{{tweet.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{tweet.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Load Tweets">
+        </form>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
