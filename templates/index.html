@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Task Master</title>
 {% endblock %}
 
 {% block body %}
@@ -39,6 +38,66 @@
             <input type="text" name="content" id="content">
             <input type="submit" value="Load Tweets">
         </form>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">COVID 19 Tweet Hub</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+      </nav>
     </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class = "content">
+        <h1 style="text-align: center">Welcome!</h1>
+        <p style="text-align: center">Tweets are retrieved from @WhiteHouse.</p>
+      {% if tasks | length < 1 %}
+        <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+      {% else %}
+          <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Tweet</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+              <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                  <a href="/delete/{{task.id}}">Delete</a><br>
+                  <a href="/update/{{task.id}}">Update</a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+      {% endif %}
+          <div class="form">
+              <form action="/" method="POST">
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <input class="mdl-textfield__input" type="text" id="content" name="content">
+                      <label class="mdl-textfield__label" for="sample1">Enter A New Row</label>
+                    </div>
+                  <!-- Colored raised button -->
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" input type="submit">
+                    Add Task
+                  </button>
+              </form>
+          </div>
+      </div>
+      {% endblock %}
+    </div>
+  </main>
 </div>
-{% endblock %}
