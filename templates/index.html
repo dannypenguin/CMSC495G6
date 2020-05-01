@@ -4,40 +4,6 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center">Tweet Master</h1>
-    {% if tweets|length < 1 %}
-    <h4 style="text-align: center">There are no Tweets. Create one below!</h4>
-    {% else %}
-    <table>
-        <tr>
-            <th>Author</th>
-            <th>URL</th>
-            <th>Content</th>
-            <th>Date/Time of Tweet</th>
-            <th>Actions</th>
-        </tr>
-        {% for tweet in tweets %}
-            <tr>
-                <td>{{ tweet.author }}</td>
-                <td>{{ tweet.url }}</td>
-                <td>{{ tweet.content }}</td>
-                <td>{{ tweet.date_created }}</td>
-                <td>
-                    <a href="/delete/{{tweet.id}}">Delete</a>
-                    <br>
-                    <a href="/update/{{tweet.id}}">Update</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
-
-    <div class="form">
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Load Tweets">
-        </form>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
@@ -59,25 +25,30 @@
       <div class = "content">
         <h1 style="text-align: center">Welcome!</h1>
         <p style="text-align: center">Tweets are retrieved from @WhiteHouse.</p>
-      {% if tasks | length < 1 %}
+      {% if tweets | length < 1 %}
         <h4 style="text-align: center">There are no tasks. Create one below!</h4>
       {% else %}
           <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
             <thead>
               <tr>
-                <th>Source</th>
-                <th>Tweet</th>
+                <th>Author</th>
+                <th>URL</th>
+                <th>Content</th>
+                <th>Date/Time of Tweet</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-            {% for task in tasks %}
+            {% for tweet in tweets %}
               <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
+                <td>{{ tweet.author }}</td>
+                <td>{{ tweet.url }}</td>
+                <td>{{ tweet.content }}</td>
+                <td>{{ tweet.date_created }}</td>
                 <td>
-                  <a href="/delete/{{task.id}}">Delete</a><br>
-                  <a href="/update/{{task.id}}">Update</a>
+                    <a href="/delete/{{tweet.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{tweet.id}}">Update</a>
                 </td>
               </tr>
             {% endfor %}
