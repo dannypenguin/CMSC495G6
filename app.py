@@ -25,7 +25,8 @@ class Todo(db.Model):
 def index():
     if request.method == 'POST':
         #call gettweets, need to add a list of users to iterate over
-        data = gettweets.get_tweets02('FakeScience')
+        # data = gettweets.get_tweets02('FakeScience') old function
+        data = gettweets.getTweets()
         # iterate over each tweet stored in data and store in DB
         for tweet in data:
             # New row of data for DB
