@@ -13,20 +13,20 @@
         </div>
     </header>
     <h1 style="text-align: center">Welcome!</h1>
-    <p style="text-align: center">Tweets are retrieved from @WhiteHouse.</p>
+    <p style="text-align: center">Tweets are retrieved from @GovLarryHogan, @GavinNewsom, @CDCgov, @WHO, @WhiteHouse, @NIAIDNews.</p>
+    <div class="form">
+        <form action="/" method="POST">
+            <div class="mdl-textfield mdl-js-textfield">
+                <!-- Colored raised button -->
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" input type="submit">Refresh</button>
+        </form>
+        </div>
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="content">
                 {% if tweets | length
                 < 1 %} <h4 style="text-align: center">There are no tweets. Hit Refresh To Load Tweets!</h4>
                     {% else %}
-                    <div class="form">
-                        <form action="/" method="POST">
-                            <div class="mdl-textfield mdl-js-textfield">
-                                <!-- Colored raised button -->
-                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" input type="submit">Refresh</button>
-                        </form>
-                        </div>
                         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                             <thead>
                                 <tr>
