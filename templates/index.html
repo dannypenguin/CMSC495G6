@@ -30,6 +30,7 @@
                         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                             <thead>
                                 <tr>
+                                    <th>Tweet ID</th>
                                     <th>Author</th>
                                     <th>URL</th>
                                     <th>Content</th>
@@ -40,6 +41,7 @@
                             <tbody>
                                 {% for tweet in tweets %}
                                 <tr>
+                                    <td>{{ tweet.id }}</td>
                                     <td>{{ tweet.author }}</td>
                                     <td>{{ tweet.url }}</td>
                                     <td>{{ tweet.content }}</td>
