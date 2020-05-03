@@ -4,6 +4,12 @@
         <div class="mdl-layout__header-row">
             <!-- Title -->
             <span class="mdl-layout-title">COVID 19 Tweet Hub</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="">Sign In to Twitter</a>
+            </nav>
         </div>
     </header>
     <h1 style="text-align: center">Welcome!</h1>
@@ -39,7 +45,35 @@
                                     <td>{{ tweet.content }}</td>
                                     <td>{{ tweet.date_created }}</td>
                                     <td>
-                                        <a href="/delete/{{tweet.id}}">Delete</a>
+                                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" input type="submit">Retweet</button>
+                                        <!-- <button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Details</button>
+                                        <dialog class="mdl-dialog" style="width: 1000px; text-align: left">
+                                            <h4 class="mdl-dialog__title">Tweet Details</h4>
+                                            <div class="mdl-dialog__content">
+                                                <p>
+                                                    <b>Author: </b> {{ tweet.author }}
+                                                    <br> <b>Date: </b> {{ tweet.date_created }}
+                                                    <br> <b>Content: </b> <br><br> {{ tweet.content }} </p>
+                                            </div>
+                                            <div class="mdl-dialog__actions">
+                                                <button type="button" class="mdl-button">Retweet</button>
+                                                <button type="button" class="mdl-button close">Close</button>
+                                            </div>
+                                        </dialog>
+                                        <script>
+                                            var dialog = document.querySelector('dialog');
+                                            var showDialogButton = document.querySelector('#show-dialog');
+                                            if (!dialog.showModal) {
+                                                dialogPolyfill.registerDialog(dialog);
+                                            }
+                                            showDialogButton.addEventListener('click', function() {
+                                                dialog.showModal();
+                                            });
+                                            dialog.querySelector('.close').addEventListener('click', function() {
+                                                dialog.close();
+                                            });
+                                        </script> -->
+                                        <!-- <a href="/delete/{{tweet.id}}">Delete</a> -->
                                     </td>
                                 </tr>
                                 {% endfor %}
