@@ -18,7 +18,7 @@
         <form action="/" method="POST">
             <div class="mdl-textfield mdl-js-textfield">
                 <!-- Colored raised button -->
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" input type="submit">Refresh</button>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" style= "margin-left: 500px;" input type="submit">Refresh</button>
         </form>
         </div>
     <main class="mdl-layout__content">
@@ -27,56 +27,22 @@
                 {% if tweets | length
                 < 1 %} <h4 style="text-align: center">There are no tweets. Hit Refresh To Load Tweets!</h4>
                     {% else %}
-                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style= "white-space: normal;">
                             <thead>
                                 <tr>
-                                    <th>Tweet ID</th>
                                     <th>Author</th>
                                     <th>URL</th>
                                     <th>Content</th>
                                     <th>Date/Time of Tweet</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for tweet in tweets %}
                                 <tr>
-                                    <td>{{ tweet.id }}</td>
                                     <td>{{ tweet.author }}</td>
                                     <td>{{ tweet.url }}</td>
                                     <td>{{ tweet.content }}</td>
                                     <td>{{ tweet.date_created }}</td>
-                                    <td>
-                                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" input type="submit">Retweet</button>
-                                        <!-- <button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">Details</button>
-                                        <dialog class="mdl-dialog" style="width: 1000px; text-align: left">
-                                            <h4 class="mdl-dialog__title">Tweet Details</h4>
-                                            <div class="mdl-dialog__content">
-                                                <p>
-                                                    <b>Author: </b> {{ tweet.author }}
-                                                    <br> <b>Date: </b> {{ tweet.date_created }}
-                                                    <br> <b>Content: </b> <br><br> {{ tweet.content }} </p>
-                                            </div>
-                                            <div class="mdl-dialog__actions">
-                                                <button type="button" class="mdl-button">Retweet</button>
-                                                <button type="button" class="mdl-button close">Close</button>
-                                            </div>
-                                        </dialog>
-                                        <script>
-                                            var dialog = document.querySelector('dialog');
-                                            var showDialogButton = document.querySelector('#show-dialog');
-                                            if (!dialog.showModal) {
-                                                dialogPolyfill.registerDialog(dialog);
-                                            }
-                                            showDialogButton.addEventListener('click', function() {
-                                                dialog.showModal();
-                                            });
-                                            dialog.querySelector('.close').addEventListener('click', function() {
-                                                dialog.close();
-                                            });
-                                        </script> -->
-                                        <!-- <a href="/delete/{{tweet.id}}">Delete</a> -->
-                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
