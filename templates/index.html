@@ -6,55 +6,48 @@
             <span class="mdl-layout-title">COVID 19 Tweet Hub</span>
         </div>
     </header>
+    <h1 style="text-align: center">Welcome!</h1>
+    <p style="text-align: center">Tweets are retrieved from @WhiteHouse.</p>
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="content">
-                <h1 style="text-align: center">Welcome!</h1>
-                <p style="text-align: center">Tweets are retrieved from @WhiteHouse.</p>
                 {% if tweets | length
-                < 1 %} <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+                < 1 %} <h4 style="text-align: center">There are no tweets. Hit Refresh To Load Tweets!</h4>
                     {% else %}
-                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                        <thead>
-                            <tr>
-                                <th>Author</th>
-                                <th>URL</th>
-                                <th>Content</th>
-                                <th>Date/Time of Tweet</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for tweet in tweets %}
-                            <tr>
-                                <td>{{ tweet.author }}</td>
-                                <td>{{ tweet.url }}</td>
-                                <td>{{ tweet.content }}</td>
-                                <td>{{ tweet.date_created }}</td>
-                                <td>
-                                    <a href="/delete/{{tweet.id}}">Delete</a>
-                                    <br>
-                                    <a href="/update/{{tweet.id}}">Update</a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    {% endif %}
                     <div class="form">
                         <form action="/" method="POST">
                             <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" type="text" id="content" name="content">
-                                <label class="mdl-textfield__label" for="sample1">Enter A New Row</label>
-                            </div>
-                            <!-- Colored raised button -->
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" input type="submit">
-                    Add Task
-                  </button>
+                                <!-- Colored raised button -->
+                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" input type="submit">Refresh</button>
                         </form>
+                        </div>
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                                <tr>
+                                    <th>Author</th>
+                                    <th>URL</th>
+                                    <th>Content</th>
+                                    <th>Date/Time of Tweet</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for tweet in tweets %}
+                                <tr>
+                                    <td>{{ tweet.author }}</td>
+                                    <td>{{ tweet.url }}</td>
+                                    <td>{{ tweet.content }}</td>
+                                    <td>{{ tweet.date_created }}</td>
+                                    <td>
+                                        <a href="/delete/{{tweet.id}}">Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <br> {% endif %}
                     </div>
+                    {% endblock %}
             </div>
-            {% endblock %}
-        </div>
     </main>
-</div>
+    </div>
