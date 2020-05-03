@@ -26,7 +26,7 @@ def get_tweets02(username):
     # Iterate thru tweets
     for tweet in tweepy.Cursor(api.user_timeline, screen_name = username, tweet_mode = 'extended').items(1):
         #print(tweet.id)
-        print(tweet.user.name +": "+ str(tweet.user.id))
+        #print(tweet.user.name +": "+ str(tweet.user.id))
         #print(tweet.created_at.strftime("%m/%d/%Y, %H:%M:%S"))
         tweet_info = {
                     'tweet_id': tweet.id,
@@ -77,7 +77,7 @@ def getTweets():
                     'source_url': tweet.source_url
                 }
             data.append(tweet_info)
-        return data
+    return data
         
 
 #getTweets()
