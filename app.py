@@ -64,7 +64,7 @@ def index():
         return render_template('index.html', tweets = tweets)
 
 
-@app.route('/twitterlogin', methods=['POST', 'GET'])
+@app.route('/twitterlogin')
 def twitter_login():
     if not twitter.authorized:
         return redirect(url_for("twitter.login"))
