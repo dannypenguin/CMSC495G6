@@ -4,12 +4,6 @@
         <div class="mdl-layout__header-row">
             <!-- Title -->
             <span class="mdl-layout-title">COVID 19 Tweet Hub</span>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="https://umuccmsc495g6project.herokuapp.com/twitterlogin">Sign In to Twitter</a>
-            </nav>
         </div>
     </header>
     <h1 style="text-align: center">Welcome!</h1>
@@ -40,7 +34,7 @@
                                 {% for tweet in tweets %}
                                 <tr>
                                     <td>{{ tweet.author }}</td>
-                                    <td>{{ tweet.url }}</td>
+                                    <td><a href="https://twitter.com/{{ tweet.author }}/status/{{ tweet.tweet_id }}">Link to Twitter</a></td>
                                     <td>{{ tweet.content }}</td>
                                     <td>{{ tweet.date_created }}</td>
                                 </tr>
