@@ -8,7 +8,7 @@ app = Flask(__name__)
 #initialize db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
-data = []
+data = [] # holds data to be input into the db
 
 # create db
 class Todo(db.Model):
@@ -27,7 +27,6 @@ class Todo(db.Model):
 def index():
     if request.method == 'POST':
         # call gettweets, need to add a list of users to iterate over
-        # data = gettweets.get_tweets02('FakeScience') old function
         data = gettweets.getTweets()
         # iterate over each tweet stored in data and store in DB
         for tweet in data:
@@ -40,8 +39,7 @@ def index():
             try:
                 db.session.add(new_tweet)
                 db.session.commit() # try adding all tweets and only doing one commit after loop
-                delete(80)
-                print("it werked")
+                delete(80)# number of tweets
             except:
                 return 'There was an issue adding your tweet'
         return redirect('/')
@@ -59,7 +57,5 @@ def delete(limit):
         db.session.commit()
         row_count = Todo.query.count()
     
-
-
 if __name__ == "__main__":
     app.run(debug=True)
