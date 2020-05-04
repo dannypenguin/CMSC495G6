@@ -43,16 +43,20 @@ def index():
                 print("it werked")
             except:
                 return 'There was an issue adding your tweet'
-            row_count = Todo.query.count()
-        if row_count > 100:
-            first_tweet = Todo.query.order_by(Todo.timestamp.asc()).first()
-            db.session.delete(first_tweet)
-            db.session.commit()
         return redirect('/')
     
     else:
         tweets = Todo.query.order_by(Todo.id).all()
         return render_template('index.html', tweets = tweets)
+
+@app.route('/', methods=['POST', 'GET'])
+def delete(limit):
+    row_count = Todo.query.count()
+    while row_count > limit:
+        first_tweet = Todo.query.order_by(Todo.timestamp.asc()).first()
+        db.session.delete(first_tweet)
+        db.session.commit()
+    
 
 
 if __name__ == "__main__":
