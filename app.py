@@ -3,21 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import gettweets
 
-from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
-
-
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "cmscgroup6_secret_key"
 
 #initialize db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 data = []
-
-twitter_blueprint = make_twitter_blueprint(api_key="IRtAWN2xOvjmCue4lmQEkHNoQ", api_secret="veMK7T5audEbTegdB6gEm0uYnnco6dDp1JvEmciGd5vo5LF9Sx")
-
-app.register_blueprint(twitter_blueprint, url_prefix = "/twitter_login")
 
 # create db
 class Todo(db.Model):
@@ -62,20 +53,6 @@ def index():
     else:
         tweets = Todo.query.order_by(Todo.id).all()
         return render_template('index.html', tweets = tweets)
-
-
-@app.route('/twitterlogin')
-def twitter_login():
-    if not twitter.authorized:
-        return redirect(url_for("twitter.login"))
-
-    account_info = twitter.get("accounts/settings.json")
-
-    if account_info.ok:
-        account_info_json = account_info.json
-        return "<h1> Welcom @{}<h1>".format(account_info_json["screen_name"])
-
-    return "log in failed..."
 
 
 if __name__ == "__main__":
