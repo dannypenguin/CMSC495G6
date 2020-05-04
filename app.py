@@ -56,6 +56,7 @@ def delete(limit):
         first_tweet = Todo.query.order_by(Todo.timestamp.asc()).first()
         db.session.delete(first_tweet)
         db.session.commit()
+        row_count = Todo.query.count()
     
 
 
