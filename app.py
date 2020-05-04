@@ -38,9 +38,9 @@ def index():
             url = tweet['source_url'], 
             date_created = tweet['created'])
             try:
-                delete(10)
                 db.session.add(new_tweet)
                 db.session.commit() # try adding all tweets and only doing one commit after loop
+                delete(80)
                 print("it werked")
             except:
                 return 'There was an issue adding your tweet'
