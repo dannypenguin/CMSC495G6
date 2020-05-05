@@ -39,9 +39,11 @@ def index():
             try:
                 db.session.add(new_tweet)
                 db.session.commit() # try adding all tweets and only doing one commit after loop
-                delete(80)# number of tweets
+                delete(60)# number of tweets
             except:
-                return 'There was an issue adding your tweet'
+                print('ERROR: Database may be unavailable. There was an issue adding your tweet')
+                #return 'ERROR: Database may be unavailable. There was an issue adding your tweet'
+                return redirect('/')
         return redirect('/')
     
     else:

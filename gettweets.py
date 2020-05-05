@@ -11,10 +11,15 @@ access_secret = ""
 usernamelist = ["GovLarryHogan", "GavinNewsom", "CDCgov", "WHO", "WhiteHouse", "NIAIDNews"]
 numberOfTweets = 10
 
-# Authorization to consumer key and consumer secret
-auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
-# Calling api
-api = tweepy.API(auth)
+try:
+    # Authorization to consumer key and consumer secret
+    auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
+    # Calling api
+    api = tweepy.API(auth)
+except:
+    print("Error: Missing API keys")
+
+
 
 # hold tweets as python dicts
 data = []
