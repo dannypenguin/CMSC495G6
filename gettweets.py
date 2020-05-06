@@ -21,29 +21,20 @@ def getTweets(CLIENT_KEY, CLIENT_SECRET):
     except:
         print("Error: Missing API keys")
 
-    
+    # holds user ids
     useridlist = [2987671552, 11347122, 146569971, 
                     14499829, 822215673812119553, 59769395,
                     15134240, 44783853, 19658936]
-
-    # 
+    # Iterate thru Users
     for userid in useridlist: 
             # Iterate thru tweets
         for tweet in tweepy.Cursor(api.user_timeline, user_id = userid, tweet_mode = 'extended').items(numberOfTweets):
             
-            print(tweet.user.name +": "+ str(tweet.id))
-            #print(tweet)
-            
             tweet_info = {
                     'tweet_id': tweet.id,
                     'name': tweet.user.screen_name,
-                    #'screen_name': tweet.user.screen_name,
-                    #'retweet_count': tweet.retweet_count,
                     'text': tweet.full_text,
-                    #'time_read_at': datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S"),
-                    'created': tweet.created_at.strftime("%m/%d/%Y, %H:%M:%S"),
-                    #'favourite_count': tweet.favorite_count,
-                    'source_url': tweet.source_url
+                    'created': tweet.created_at.strftime("%m/%d/%Y, %H:%M:%S")
                 }
             data.append(tweet_info)
     return data

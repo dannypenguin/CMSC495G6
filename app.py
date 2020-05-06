@@ -24,7 +24,6 @@ class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)# db ID
     tweet_id = db.Column(db.Integer, nullable=False) # tweet id
     author = db.Column(db.String(50), nullable=False)# Twitter Username
-    url = db.Column(db.String(500), nullable=False)# tweet url
     content = db.Column(db.String(200), nullable=False)# Tweet Content
     date_created = db.Column(db.String(50), nullable=False)# Date/time of tweet
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)# Date/time tweet is pulled into db
@@ -42,13 +41,12 @@ def index():
             # New row of data for DB
             new_tweet = Todo(tweet_id = tweet['tweet_id'], 
             author = tweet['name'], 
-            content = tweet['text'], 
-            url = tweet['source_url'], 
+            content = tweet['text'],  
             date_created = tweet['created'])
             try:
                 db.session.add(new_tweet)
                 db.session.commit() # try adding all tweets and only doing one commit after loop
-                delete(60)# number of tweets
+                delete(90)# number of tweets
             except:
                 print('ERROR: Database may be unavailable. There was an issue adding your tweet')
                 #return 'ERROR: Database may be unavailable. There was an issue adding your tweet'
