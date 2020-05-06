@@ -32,11 +32,7 @@ Step 2: Get OAuth credentials from Twitter
 ------------------------------------------
 Visit https://developer.twitter.com/en/apps to register an
 app on Twitter. In order to register the application, you'll need that
-app name from Heroku. The Twitter app's authorization callback URL
-must be ``https://APPNAME.herokuapp.com/login/twitter/authorized``. For example,
-if Heroku assigned you an app name of ``dingleberry``, your authorization
-callback URL must be
-``https://dingleberry.herokuapp.com/login/twitter/authorized``.
+app name from Heroku. 
 
 Once you've registered your application on Twitter, Twitter will give you an
 app ID and app secret, which we'll use in the next step.
@@ -103,11 +99,6 @@ variables:
   OAuth. You should only do this for local testing.
   Do **not** set this in production! [`oauthlib docs`_]
 
-How you set these variables depends on your operating system. For Mac/Linux, you
-can use the `export`_ command. For Windows, you can use the `SET`_ command. If
-you don't want to worry about this, you can create a ``.env`` file with
-your environment variables, and use `foreman`_ to run your app. This repository
-has a ``.env.example`` file that you can copy.
 
 Step 4: Run your app 
 --------------------------------------------
