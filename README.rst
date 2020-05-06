@@ -72,8 +72,7 @@ If you'd prefer to run this locally on your computer, you can do that as well.
 Step 1: Get OAuth credentials from Twitter
 ------------------------------------------
 Visit https://developer.twitter.com/en/apps to register an
-app on Twitter. You must set the application's authorization
-callback URL to ``http://127.0.0.1:5000/login/twitter/authorized``.
+app on Twitter. 
 
 Once you've registered your application on Twitter, Twitter will give you an
 app ID and app secret, which we'll use in step 3.
@@ -82,10 +81,9 @@ Step 2: Install code and dependencies
 -------------------------------------
 Run the following commands on your computer::
 
-    git clone https://github.com/singingwolfboy/flask-dance-twitter.git
-    cd flask-dance-twitter
-    python3 -m venv venv
-    source venv/bin/activate
+    git clone https://github.com/dannypenguin/CMSC495G6
+    cd CMSC495G6
+    source env/bin/activate
     pip install -r requirements.txt
 
 These commands will clone this git repository onto your computer,
@@ -94,8 +92,7 @@ the dependencies listed in ``requirements.txt``.
 
 Step 3: Set environment variables
 ---------------------------------
-Many applications use `environment variables`_ for configuration, and
-Flask-Dance is no exception. You'll need to set the following environment
+Many applications use `environment variables`_ for configuration. You'll need to set the following environment
 variables:
 
 * ``TWITTER_OAUTH_CLIENT_KEY``: set this to the app ID you got from Twitter.
@@ -112,36 +109,28 @@ you don't want to worry about this, you can create a ``.env`` file with
 your environment variables, and use `foreman`_ to run your app. This repository
 has a ``.env.example`` file that you can copy.
 
-Step 4: Run your app and login with Twitter!
+Step 4: Run your app 
 --------------------------------------------
 If you're setting environment variables manually, run your app using Python::
 
-    FLASK_APP=twitter.py flask run
+    FLASK_APP=app.py flask run
 
-If you're using a ``.env`` file for your environment variables, install `foreman`_
-and use that to run your app::
 
-    foreman start
-
-Then, go to http://localhost:5000/ to visit your app and log in with Twitter!
+Then, go to http://localhost:5000/ to visit your app!
 
 Learn more!
 ```````````
-`Fork this GitHub repo`_ so that you can make changes to it. Read the
-documentation for `Flask`_ and `Flask-Dance`_ to learn what's possible.
-Ask questions, learn as you go, build your own OAuth-enabled web application,
-and don't forget to be awesome!
+`Fork this GitHub repo`_ so that you can make changes to it. 
+
 
 
 .. _Flask: http://flask.pocoo.org/docs/
-.. _Flask-Dance: http://flask-dance.readthedocs.org/
 .. _Twitter: https://twitter.com/
 .. _Heroku: https://www.heroku.com/
 .. _environment variables: https://en.wikipedia.org/wiki/Environment_variable
 .. _oauthlib docs: http://oauthlib.readthedocs.org/en/latest/oauth2/security.html#envvar-OAUTHLIB_INSECURE_TRANSPORT
 .. _export: http://ss64.com/bash/export.html
 .. _SET: http://ss64.com/nt/set.html
-.. _foreman: https://github.com/ddollar/foreman
 .. _virtual environment: https://docs.python.org/3.7/library/venv.html
 .. _Fork this GitHub repo: https://help.github.com/articles/fork-a-repo/
 
