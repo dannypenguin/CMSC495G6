@@ -62,7 +62,7 @@ Step 4: Visit your app and login with Twitter!
 Your app name from Heroku will determine the URL that your app is running on:
 the URL will be ``https://APPNAME.herokuapp.com``. For example, if Heroku
 assigned you an app name of ``peaceful-lake``, your app will be available at
-``https://peaceful-lake.herokuapp.com``. Visit that URL, and you should
+``https://dingleberry.herokuapp.com``. Visit that URL, and you should
 immediately be redirected to login with Twitter!
 
 Local Installation
