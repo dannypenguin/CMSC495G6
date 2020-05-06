@@ -1,0 +1,23 @@
+{
+    "name": "umuc cmsc495 group 6 project",
+    "description": "umuc cmsc495 group 6 project",
+    "keywords": [
+      "oauth"
+    ],
+    "website": "https://github.com/dannypenguin/CMSC495G6",
+    "repository": "https://github.com/dannypenguin/CMSC495G6",
+    "env": {
+      "FLASK_SECRET_KEY": {
+        "description": "A secret key for verifying the integrity of signed cookies.",
+        "generator": "secret"
+      },
+      "TWITTER_OAUTH_CLIENT_KEY": {
+        "description": "The OAuth client key for your application, assigned by Twitter",
+        "value": "client-id-goes-here"
+      },
+      "TWITTER_OAUTH_CLIENT_SECRET": {
+        "description": "The OAuth client secret for your application, assigned by Twitter",
+        "value": "client-secret-goes-here"
+      }
+    }
+  }
