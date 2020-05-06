@@ -1,29 +1,22 @@
 import tweepy
 from datetime import datetime
 
+
 # Fill the X's with the credentials obtained by
 # following the above mentioned procedure.
-consumer_key = "IRtAWN2xOvjmCue4lmQEkHNoQ"
-consumer_secret = "veMK7T5audEbTegdB6gEm0uYnnco6dDp1JvEmciGd5vo5LF9Sx"
-access_key = "-"
-access_secret = ""
+#consumer_key = "IRtAWN2xOvjmCue4lmQEkHNoQ"
+#consumer_secret = "veMK7T5audEbTegdB6gEm0uYnnco6dDp1JvEmciGd5vo5LF9Sx"
+#access_key = "-"
+#access_secret = ""
 
 usernamelist = ["GovLarryHogan", "GavinNewsom", "CDCgov", "WHO", "WhiteHouse", "NIAIDNews"]
 numberOfTweets = 10
-
-try:
-    # Authorization to consumer key and consumer secret
-    auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
-    # Calling api
-    api = tweepy.API(auth)
-except:
-    print("Error: Missing API keys")
-
 
 
 # hold tweets as python dicts
 data = []
 
+'''
 # Function to extract tweets
 def get_tweets02(username):
 
@@ -52,12 +45,22 @@ def testsources():
         get_tweets02(i) 
 
 #testsources()
+'''
 
-def getTweets():
+def getTweets(CLIENT_KEY, CLIENT_SECRET):
     '''
     user id list: Governor Larry Hogan, Gavin Newsom, CDC, World Health Organization (WHO), 
     The White House, NIAID News
     '''
+
+    try:
+        # Authorization to consumer key and consumer secret
+        auth = tweepy.AppAuthHandler(CLIENT_KEY, CLIENT_SECRET)
+        # Calling api
+        api = tweepy.API(auth)
+    except:
+        print("Error: Missing API keys")
+
     
     useridlist = [2987671552, 11347122, 146569971, 
                     14499829, 822215673812119553, 59769395]
