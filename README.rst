@@ -1,11 +1,13 @@
-Flask-Dance Example App: Twitter Edition
+COVID-19 Tweet Hub: CMSC 495 Group 6 Project
 ========================================
 
-This repository provides an example of how to use `Flask-Dance`_ to connect
-to `Twitter`_ as an OAuth client. The example code is in ``twitter.py`` --
-all the other files in this repository are secondary. You can run this example
+This repository contains the final project for Group 6 which is an app that gets tweets about 
+COVID-19 from twitter accounts and loads it into a table.  You can run this example
 code locally, or deploy it to Heroku for free to see how it runs in a
 production-style environment.
+
+You can check out our deployment with keys at:
+https://umuccmsc495g6project.herokuapp.com/
 
 Heroku Installation
 ```````````````````
@@ -32,9 +34,9 @@ Visit https://developer.twitter.com/en/apps to register an
 app on Twitter. In order to register the application, you'll need that
 app name from Heroku. The Twitter app's authorization callback URL
 must be ``https://APPNAME.herokuapp.com/login/twitter/authorized``. For example,
-if Heroku assigned you an app name of ``peaceful-lake``, your authorization
+if Heroku assigned you an app name of ``dingleberry``, your authorization
 callback URL must be
-``https://peaceful-lake.herokuapp.com/login/twitter/authorized``.
+``https://dingleberry.herokuapp.com/login/twitter/authorized``.
 
 Once you've registered your application on Twitter, Twitter will give you an
 app ID and app secret, which we'll use in the next step.
