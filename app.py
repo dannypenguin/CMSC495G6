@@ -2,8 +2,17 @@ from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import gettweets
+import os
 
 app = Flask(__name__)
+
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "umuccmsc495group6project")
+app.config["TWITTER_OAUTH_CLIENT_KEY"] = os.environ.get("TWITTER_OAUTH_CLIENT_KEY")
+app.config["TWITTER_OAUTH_CLIENT_SECRET"] = os.environ.get("TWITTER_OAUTH_CLIENT_SECRET")
+
+# testing
+OAUTH_CLIENT_KEY = os.environ.get("TWITTER_OAUTH_CLIENT_KEY")
+OAUTH_CLIENT_SECRET = os.environ.get("TWITTER_OAUTH_CLIENT_SECRET")
 
 #initialize db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -27,7 +36,7 @@ class Todo(db.Model):
 def index():
     if request.method == 'POST':
         # call gettweets, need to add a list of users to iterate over
-        data = gettweets.getTweets()
+        data = gettweets.getTweets(OAUTH_CLIENT_KEY, OAUTH_CLIENT_SECRET)
         # iterate over each tweet stored in data and store in DB
         for tweet in data:
             # New row of data for DB
