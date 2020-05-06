@@ -1,14 +1,6 @@
 import tweepy
 from datetime import datetime
 
-
-# Fill the X's with the credentials obtained by
-# following the above mentioned procedure.
-#consumer_key = "IRtAWN2xOvjmCue4lmQEkHNoQ"
-#consumer_secret = "veMK7T5audEbTegdB6gEm0uYnnco6dDp1JvEmciGd5vo5LF9Sx"
-#access_key = "-"
-#access_secret = ""
-
 usernamelist = ["GovLarryHogan", "GavinNewsom", "CDCgov", "WHO", "WhiteHouse", "NIAIDNews"]
 numberOfTweets = 10
 
