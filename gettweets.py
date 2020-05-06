@@ -1,7 +1,6 @@
 import tweepy
 from datetime import datetime
 
-usernamelist = ["GovLarryHogan", "GavinNewsom", "CDCgov", "WHO", "WhiteHouse", "NIAIDNews"]
 numberOfTweets = 10
 
 # hold tweets as python dicts
@@ -25,6 +24,7 @@ def getTweets(CLIENT_KEY, CLIENT_SECRET):
     useridlist = [2987671552, 11347122, 146569971, 
                     14499829, 822215673812119553, 59769395,
                     15134240, 44783853, 19658936]
+                    
     # Iterate thru Users
     for userid in useridlist: 
             # Iterate thru tweets

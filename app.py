@@ -40,9 +40,9 @@ def index():
         for tweet in data:
             # New row of data for DB
             new_tweet = Todo(tweet_id = tweet['tweet_id'], 
-            author = tweet['name'], 
-            content = tweet['text'],  
-            date_created = tweet['created'])
+                            author = tweet['name'], 
+                            content = tweet['text'],  
+                            date_created = tweet['created'])
             try:
                 db.session.add(new_tweet)
                 db.session.commit() # try adding all tweets and only doing one commit after loop
