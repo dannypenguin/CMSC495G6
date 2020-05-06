@@ -57,7 +57,7 @@ and paste it into the "VALUE" field next to the ``TWITTER_OAUTH_CLIENT_SECRET``
 field, replacing the dummy value that was there before.
 Click the "Save" button when you're done.
 
-Step 4: Visit your app and login with Twitter!
+Step 4: Visit your app 
 ----------------------------------------------
 Your app name from Heroku will determine the URL that your app is running on:
 the URL will be ``https://APPNAME.herokuapp.com``. For example, if Heroku
